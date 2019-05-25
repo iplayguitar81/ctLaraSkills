@@ -1,32 +1,50 @@
 @extends('layout.app')
 
-<h1>Show products</h1>
+<div class="container">
+    @if(Session::has('message'))
+        <div class="alert alert-success">
+            <h5>{{Session::get('message')}}</h5>
+        </div>
+    @endif
 
-<table class="table">
-    <thead>
-    <tr>
+        <h1>Show products</h1>
 
-        <th scope="col">Product Name</th>
-        <th scope="col">Quantity in Stock</th>
-        <th scope="col">Price</th>
-        <th scope="col">Date Time Submitted</th>
+        <table class="table">
+            <thead>
+            <tr>
 
-    </tr>
-    </thead>
-    <tbody>
-
-        @foreach($products as $product)
-    <tr>
-        <td>{{$product->name}}</td>
-        <td>{{$product->quantity}}</td>
-        <td>{{$product->price}}</td>
-        <td>{{$product->created_at}}</td>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity in Stock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date Time Submitted</th>
+                <th scope="col">Total Value</th>
 
 
-    </tr>
+            </tr>
+            </thead>
+            <tbody>
 
-        @endforeach
+            @foreach($products as $product)
+                <tr>
+                    <td>{{$product->name}}</td>
+                    <td>{{$product->quantity}}</td>
+                    <td>{{$product->price}}</td>
+                    <td>{{$product->created_at}}</td>
+                    <td>{{($product->price * $product->quantity) }}</td>
 
 
-    </tbody>
-</table>
+
+                </tr>
+
+            @endforeach
+
+
+            </tbody>
+        </table>
+
+
+    <a href="/product/create" class="btn btn-primary">Create Product</a>
+
+
+</div>
+
