@@ -41,7 +41,7 @@
 
             @endforeach
 
-<tr><td>Total Value:</td><td>{{$sum_total_val}}</td></tr>
+            <tr><td colspan="4"><b>Products Total Value</b></td><td><b>{{$sum_total_val}}</b></td></tr>
             </tbody>
         </table>
 
