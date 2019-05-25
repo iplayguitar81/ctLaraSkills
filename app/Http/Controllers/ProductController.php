@@ -21,6 +21,8 @@ class ProductController extends Controller
 
         $products = Product::orderBy('created_at')->get();
 
+
+
         return view('products.index', compact('products'));
     }
 

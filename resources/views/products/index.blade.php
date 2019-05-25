@@ -24,6 +24,10 @@
             </thead>
             <tbody>
 
+            @php ($sum_total_val = 0)
+
+
+
             @foreach($products as $product)
                 <tr>
                     <td>{{$product->name}}</td>
@@ -31,14 +35,13 @@
                     <td>{{$product->price}}</td>
                     <td>{{$product->created_at}}</td>
                     <td>{{($product->price * $product->quantity) }}</td>
-
-
-
                 </tr>
+
+                @php($sum_total_val += ($product->price * $product->quantity) )
 
             @endforeach
 
-
+<tr><td>Total Value:</td><td>{{$sum_total_val}}</td></tr>
             </tbody>
         </table>
 
