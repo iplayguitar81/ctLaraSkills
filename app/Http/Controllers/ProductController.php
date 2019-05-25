@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProductController extends Controller
 {
     /**
@@ -53,6 +55,19 @@ class ProductController extends Controller
         $product->quantity = $request->input('quantity');
         $product->price = $request->input('price');
         $product->save();
+
+
+
+        //store products in JSON format in JSON file...
+        $productsFile = Storage::disk('local')->exists('products.json') ? json_decode(Storage::disk('local')->get('products.json')) : [];
+
+        $productData = $request->only(['name', 'quantity', 'price']);
+
+
+        array_push($productsFile, $productData);
+
+        Storage::disk('local')->put('products.json', json_encode($productsFile));
+
 
 
         Session::flash('message', 'Product added!');
