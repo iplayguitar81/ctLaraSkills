@@ -9,6 +9,8 @@
         <th scope="col">Product Name</th>
         <th scope="col">Quantity in Stock</th>
         <th scope="col">Price</th>
+        <th scope="col">Date Time Submitted</th>
+
     </tr>
     </thead>
     <tbody>
@@ -18,6 +20,8 @@
         <td>{{$product->name}}</td>
         <td>{{$product->quantity}}</td>
         <td>{{$product->price}}</td>
+        <td>{{$product->created_at}}</td>
+
 
     </tr>
 
