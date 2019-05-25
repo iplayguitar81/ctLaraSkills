@@ -7,7 +7,7 @@
         </div>
     @endif
 
-        <h1>Show products</h1>
+        <h1>All Products</h1>
 
         <table class="table">
             <thead>
