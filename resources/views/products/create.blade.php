@@ -1,16 +1,26 @@
 @extends('layout.app')
+<div class="container">
 
-<h1>Create Product</h1>
+    <h1>Create Product</h1>
 
-<form method="post" action="/product">
+    <form method="post" action="/product">
 
-   @csrf
+        @csrf
 
-    <input type="text" name="name">
-    <input type="number" name="quantity">
-    <input type="number" name="price" min="0.00" max="10000.00" step="0.01">
+        <label for="name">Product Name</label> <input type="text" name="name">
+        <br/>
+        <label for="name">Quantity</label> <input type="number" name="quantity">
+        <br/>
+        <label for="name">Price</label> <input type="number" name="price" min="0.00" max="10000.00" step="0.01">
+
+    <br/>
+        <button type="submit" class="btn btn-primary">Create Product</button>
+
+    </form>
 
 
-    <button type="submit" class="btn btn-primary">Create Product</button>
+    <br/>
+    <br/>
+    <a href="/" class="btn btn-dark">View All Products</a>
+</div>
 
-</form>
