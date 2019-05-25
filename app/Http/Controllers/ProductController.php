@@ -48,9 +48,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //saves product in the database
         $product = new Product;
-
         $product->name = $request->input('name');
         $product->quantity = $request->input('quantity');
         $product->price = $request->input('price');
@@ -60,16 +59,13 @@ class ProductController extends Controller
 
         //store products in JSON format in JSON file...
         $productsFile = Storage::disk('local')->exists('products.json') ? json_decode(Storage::disk('local')->get('products.json')) : [];
-
         $productData = $request->only(['name', 'quantity', 'price']);
-
-
         array_push($productsFile, $productData);
-
         Storage::disk('local')->put('products.json', json_encode($productsFile));
 
 
 
+        //redirect to let user know product was added
         Session::flash('message', 'Product added!');
         return redirect('/');
     }
